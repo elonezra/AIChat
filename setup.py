@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='AIChat',
@@ -6,7 +6,7 @@ setup(
     description='A chat framwork to let user create a character and chat with it via openai models',
     author='Elon Ezra',
     author_email='elon-kadatz@outlook.com',
-    packages=find_packages(),
+    py_modules=['AIChat'],  # Adjust this to include your main module
     install_requires=[],
     classifiers=[
         'Development Status :: 3 - Alpha',

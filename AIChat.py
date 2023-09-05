@@ -96,10 +96,29 @@ def load_prompt_v1():
 
   ## the chat is starting now:\n
   """
-  
-# hello world
-def load_prompt_from_file(file):
-  pass
+
+def load_prompt_from_file(file_path):
+  """
+  @description: get a file string path and save it in the system instruction prompt varible
+                when you write your prompt you can reffer to the character you made by adding {character_details}
+                or reffering it with json format if it is avilible with {cd.get("name")}
+  """
+  global character_details
+  global system_template
+  assert character_details is not None, "set a character with generate_character() or set_character(chracter_data)"
+  try:
+    cd = json.loads(character_details)
+  except:
+    cd = {}
+    print("couldn't create json format for the character")
+  try:
+    f = open(file_path, "r")
+  except:
+    try:
+      f = open(file_path+".txt", "r")
+    except:
+      assert "failed to load file, check if the file is exist or is it in txt format"
+  system_template = f.read()
 
 
 def set_user_prompt(prompt):

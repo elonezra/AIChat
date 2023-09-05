@@ -26,5 +26,5 @@ to let the model generate a model. or ``set_character(chracter_data)`` to write 
 }
 ```
 3. call ``load_prompt_v1()`` in order to load the instructions promt
-4. set the user input with the function ``set_user_prompt(user_prompt)``
-5. get the response of the character with the function ``printget_character_answer()``
+4. to give a message and get a response use ``message_to_response(message)`` which get str as the message of the user and return the response of the character.
+

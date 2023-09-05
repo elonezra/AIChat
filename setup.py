@@ -7,7 +7,7 @@ setup(
     author='Elon Ezra',
     author_email='elon-kadatz@outlook.com',
     packages=find_packages(),
-    install_requires=["openai"],
+    install_requires=[],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

@@ -7,7 +7,7 @@ setup(
     author='Elon Ezra',
     author_email='elon-kadatz@outlook.com',
     py_modules=['AIChat'],  # Adjust this to include your main module
-    install_requires=[],
+    install_requires=['openai'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

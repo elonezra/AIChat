@@ -11,7 +11,8 @@ OPENAI_API_KEY = None
 
 system_template = None # the instructions for the chat system
 character_details = None # the data about the character the user will chat with
-memory = deque([],6) # the memory of the chat, how much of the conversation the character will remember
+memory_size = 6
+memory = deque([],memory_size) # the memory of the chat, how much of the conversation the character will remember
 
 
 
@@ -44,7 +45,7 @@ def get_completion_new(prompt, model="text-curie-001"):
     assert OPENAI_API_KEY is not None, "set API key with set_key(key) function"
     response = openai.Completion.create(
     model=model,
-    stop = "user:",
+    stop = "User:",
     max_tokens=1000,
     prompt=prompt,
     temperature=1)
@@ -97,6 +98,7 @@ def load_prompt_v1():
   ## the chat is starting now:\n
   """
 
+
 def load_prompt_from_file(file_path):
   """
   @description: get a file string path and save it in the system instruction prompt varible
@@ -120,6 +122,22 @@ def load_prompt_from_file(file_path):
       assert "failed to load file, check if the file is exist or is it in txt format"
   system_template = f.read()
 
+def load_prompt_from_str(instruction_prompt):
+  """
+  @description: get a file string path and save it in the system instruction prompt varible
+                when you write your prompt you can reffer to the character you made by adding {character_details}
+                or reffering it with json format if it is avilible with {cd.get("name")}
+  """
+  global character_details
+  global system_template
+  assert character_details is not None, "set a character with generate_character() or set_character(chracter_data)"
+  try:
+    cd = json.loads(character_details)
+  except:
+    cd = {}
+    print("couldn't create json format for the character")
+    
+  system_template = instruction_prompt
 
 def set_user_prompt(prompt):
   global system_template
@@ -152,6 +170,15 @@ def print_prompt():
   prompt = system_template+ "\n".join(temp_list1)
   print(prompt)
   print("==========================")
+
+def set_memory_size(memory_size):
+  global memory
+  memory = deque([],memory_size)
+
+def reset_memory():
+  global memory
+  global memory_size
+  memory = deque([],memory_size)
 
 def message_to_response(message):
   """

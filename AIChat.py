@@ -143,7 +143,7 @@ def set_user_prompt(prompt):
   global system_template
   global memory
   assert system_template is not None, "you didn't load a prompt, call load_prompt_v1() or load_prompt_from_file()"
-  memory.appendleft('\nUser: '+prompt+'\n')
+  memory.appendleft('\nUser: '+prompt+'')
   prompt = system_template+ "\n".join(list(memory))
   # print(prompt)
 

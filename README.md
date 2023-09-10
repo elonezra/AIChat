@@ -6,6 +6,11 @@ pip install git+<GitHub_URL>
 
 ## how to use
 
+first of course you need to import with
+```
+import AIChat
+```
+
 To use the module make sure you have openai installed.
 
 1. call the function ``set_key("")`` and give it the key

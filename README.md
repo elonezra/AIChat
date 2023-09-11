@@ -2,7 +2,7 @@
 
 ## how to install
 
-pip install git+<GitHub_URL>
+pip install git+https://github.com/elonezra/AIChat
 
 ## how to use
 

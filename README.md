@@ -1,9 +1,9 @@
 # AIChat doc
 
 ## how to install
-
+```
 pip install git+https://github.com/elonezra/AIChat
-
+```
 ## how to use
 
 first of course you need to import with

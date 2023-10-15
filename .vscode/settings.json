@@ -1,0 +1,6 @@
+{
+    "CodeGPT.apiKey": "OpenAI",
+    "CodeGPT.model": "text-davinci-003",
+    "CodeGPT.query.language": "Hebrew",
+    "CodeGPT.organizationId": "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"
+}

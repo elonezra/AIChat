@@ -1,1 +1,1 @@
-from .AIChat import ChatbotAgent
+from .src.AIChat import ChatbotAgent

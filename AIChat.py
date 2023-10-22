@@ -78,30 +78,27 @@ Response: oh, hello.
 """
 
 
-    def load_prompt_from_file(self, system_template):
-        self.system_template = system_template
-
-        def load_prompt_from_file(self, file_path):
-            """
-            @description: get a file string path and save it in the system instruction prompt varible
-                            when you write your prompt you can reffer to the character you made by adding {character_details}
-                            or reffering it with json format if it is avilible with {cd.get("name")}
-            """
-            character_details =self.character_details
-            
+    def load_prompt_from_file(self, file_path):
+        """
+        @description: get a file string path and save it in the system instruction prompt varible
+                        when you write your prompt you can reffer to the character you made by adding {character_details}
+                        or reffering it with json format if it is avilible with {cd.get("name")}
+        """
+        character_details =self.character_details
+        
+        try:
+            cd = json.loads(character_details)
+        except:
+            cd = {}
+            print("couldn't create json format for the character")
+        try:
+            f = open(file_path, "r")
+        except:
             try:
-                cd = json.loads(character_details)
+                f = open(file_path+".txt", "r")
             except:
-                cd = {}
-                print("couldn't create json format for the character")
-            try:
-                f = open(file_path, "r")
-            except:
-                try:
-                    f = open(file_path+".txt", "r")
-                except:
-                    assert "failed to load file, check if the file is exist or is it in txt format"
-            self.system_template = f.read()
+                assert "failed to load file, check if the file is exist or is it in txt format"
+        self.system_template = f.read()
 
     def load_prompt_from_str(self, instruction_prompt):
         """

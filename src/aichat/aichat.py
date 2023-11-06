@@ -38,6 +38,7 @@ class ChatbotAgent:
         Format the data in JSON format with the keys: ethnicity, name, age, sex, country, city , hobbies, appearance, traits""")
         # print(character_details)
         return self.character_details
+    
     def set_character(self, character_data):
         self.character_details = character_data
 
@@ -84,13 +85,6 @@ Response: oh, hello.
                         when you write your prompt you can reffer to the character you made by adding {character_details}
                         or reffering it with json format if it is avilible with {cd.get("name")}
         """
-        character_details =self.character_details
-        
-        try:
-            cd = json.loads(character_details)
-        except:
-            cd = {}
-            print("couldn't create json format for the character")
         try:
             f = open(file_path, "r")
         except:
@@ -143,5 +137,13 @@ Response: oh, hello.
 
     def message_to_response(self, message):
         # Send a message to the chatbot and get a response
+        self.set_user_prompt(message)
+        return self.get_character_answer()
+
+    def message_to_response(self, message, generateor ):
+        # Send a message to the chatbot and get a response
+        
+
+
         self.set_user_prompt(message)
         return self.get_character_answer()

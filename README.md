@@ -1,75 +1,25 @@
-# AIChat doc
+# aichat
 
-## how to install
+framework for makeing chat with any LLM system
 
-```
-pip install git+https://github.com/elonezra/AIChat
-```
+## Installation
 
-## how to use
-
-First, you need to import the class with:
-
-```
-from AIChat import ChatbotAgent
+```bash
+$ pip install aichat
 ```
 
-To use the module, make sure you have OpenAI installed.
+## Usage
 
-1. To create an agent, use `chatbot = ChatbotAgent(character_details, memory_size)`.
-    * `character_details` is a string of character details, see section 3.
-    * `memory_size` is the size of the agent's memory, number of messages it save.
+- TODO
 
-2. Call the function `chatbot.set_key("")` and give it the key.
+## Contributing
 
-3. (Optional) Create a character to talk with by using the functions:
-    * `chatbot.generate_character()` (you can do this now in the constructor).
-    * `chatbot.set_character(chracter_data)` to write your own characteristics.\
-    It is better to use the following JSON format:
+Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
-```json
-{
-    "ethnicity": "",
-    "name": "",
-    "age": 28,
-    "sex": " ",
-    "country": " ",
-    "city": "",
-    "hobbies": ["Reading", "Hiking", "Painting"],
-    "appearance": {
-        "height": "5\'7\\"",
-        "hairColor": "Blonde",
-        "eyeColor": "Blue"
-    },
-    "traits": ["Friendly", "Creative", "Empathetic"]
-}
-```
+## License
 
-4. Call `chatbot.load_prompt_v1()` to load the instructions prompt.
+`aichat` was created by Elon Ezra. It is licensed under the terms of the MIT license.
 
-5. To give a message and get a response, use `chatbot.message_to_response(message)`, which takes a string as the user's message and returns the character's response.
+## Credits
 
-**example:**
-
-
-```python
-from AIChat import ChatbotAgent
-
-# Create a chatbot agent with a memory size of 10 messages.
-chatbot = ChatbotAgent(character_details="This is a character.", memory_size=10)
-
-# Set the key.
-chatbot.set_key("YOUR_API_KEY")
-
-# Generate a character to talk with.
-chatbot.generate_character()
-
-# Load the instructions prompt.
-chatbot.load_prompt_v1()
-
-# Give a message and get a response.
-response = chatbot.message_to_response("Hello, world!")
-
-# Print the response.
-print(response)
-```
+`aichat` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
